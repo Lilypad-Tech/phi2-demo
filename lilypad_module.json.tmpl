@@ -15,15 +15,14 @@
                 "Concurrency": 1
             },
             "Docker": {
-                "EnvironmentVariables": [
-                    "RANDOM_SEED=42"
-                ],
-                "Entrypoint": [
-                    "python3",
-                    "loadmodel.py",
-                    "\"{{.Prompt}}\""
-                ],
+                "Entrypoint": ["bash", "-c", "python3 /usr/src/app/loadmodel.py 2>/dev/null"],
                 "Image": "noryev/phi2-demo:latest"
+                 "EnvironmentVariables": [
+          "MODEL_PATH=/usr/src/app/model",
+          "ANOTHER_ENV_VAR=value",
+          "OUTPUT_DIR=/outputs/",
+          "HF_HUB_OFFLINE=1"
+        ]
             },
             "Engine": "Docker",
             "Network": {
