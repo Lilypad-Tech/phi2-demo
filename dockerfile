@@ -17,7 +17,11 @@ COPY . /usr/src/app
 # Download the model using the huggingface_hub library
 RUN python -c "from huggingface_hub import snapshot_download; snapshot_download('amgadhasan/phi-2', cache_dir='/usr/src/app/model')"
 
+# Create an outputs directory
+RUN mkdir /usr/src/app/outputs
+
 # Ensure loadmodel.py uses the path '/usr/src/app/model' for loading the model
+# Make sure loadmodel.py writes its output to /usr/src/app/outputs
 
 # Use ENTRYPOINT to specify the script to be run, allowing for additional command-line arguments
 ENTRYPOINT ["python", "/usr/src/app/loadmodel.py"]
