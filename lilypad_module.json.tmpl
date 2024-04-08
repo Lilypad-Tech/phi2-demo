@@ -7,7 +7,7 @@
     "job": {
         "APIVersion": "V1beta1",
         "Metadata": {
-                "CreatedAt": "2023-01-01T00:00:00Z",
+            "CreatedAt": "2023-01-01T00:00:00Z",
             "Requester": {}
         },
         "Spec": {
@@ -16,20 +16,17 @@
             },
             "Docker": {
                 "EnvironmentVariables": [
-                    "{{if .Prompt}}{{.Prompt}}{{else}}PROMPT=Default prompt for phi2-demo{{end}}",
+                    "{{if .Prompt}}{{.Prompt}}{{else}}PROMPT='Default prompt for phi2-demo'{{end}}",
                     "RANDOM_SEED=42"
                 ],
                 "Entrypoint": [
                     "python3",
                     "/usr/src/app/loadmodel.py",
-                    "{{.Prompt}}"
+                    "\"{{.Prompt}}\""
                 ],
-                "Image": "hub.docker.com/noryev/phi2-demo:latest"
+                "Image": "noryev/phi2-demo:latest"
             },
             "Engine": "Docker",
-            "Language": {
-                "JobContext": {}
-            },
             "Network": {
                 "Type": "None"
             },
