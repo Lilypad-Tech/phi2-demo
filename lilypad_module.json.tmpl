@@ -15,40 +15,33 @@
                 "Concurrency": 1
             },
             "Docker": {
-                "Entrypoint": ["bash", "-c", "python3 /usr/src/app/loadmodel.py 2>/dev/null"],
                 "Image": "noryev/phi2-demo:latest",
-        "EnvironmentVariables": [
-          "MODEL_PATH=/usr/src/app/model",
-          "ANOTHER_ENV_VAR=value",
-          "OUTPUT_DIR=/outputs/",
-          "HF_HUB_OFFLINE=1"
-        ]
-      },
-      "Engine": "Docker",
-      "Language": {
-        "JobContext": {}
-      },
-      "Network": {
-        "Type": "None"
-      },
-      "Resources": {
-        "GPU": "1"
-      },
-      "Timeout": 1800,
-      "Verifier": "Noop",
-      "Wasm": {
-        "EntryModule": {}
-      },
-      "outputs": [
-        {
-          "Name": "outputs",
-          "path": "/outputs
+                "Entrypoint": ["bash", "-c", "python3 /usr/src/app/loadmodel.py 2>/dev/null"],
+                "EnvironmentVariables": [
+                    "MODEL_PATH=/usr/src/app/model",
+                    "ANOTHER_ENV_VAR=value",
+                    "OUTPUT_DIR=/outputs/",
+                    "HF_HUB_OFFLINE=1"
+                ]
+            },
+            "Engine": "Docker",
+            "Network": {
+                "Type": "None"
+            },
+            "Resources": {
+                "GPU": "1"
+            },
+            "Timeout": 1800,
+            "Verifier": "Noop",
+            "outputs": [
+                {
+                    "Name": "outputs",
+                    "path": "/outputs/"
+                }
+            ],
+            "PublisherSpec": {
+                "Type": "ipfs"
+            }
         }
-      ],
-      "PublisherSpec": {
-        "Type": "ipfs"
-      },
-
     }
-  }
 }
