@@ -20,8 +20,7 @@
                     "RANDOM_SEED=42"
                 ],
                 "Entrypoint": [
-                    "python3",
-                    "/usr/src/app/loadmodel.py",
+                    "python3 loadmodel.py",
                     "\"{{.Prompt}}\""
                 ],
                 "Image": "noryev/phi2-demo:latest"
