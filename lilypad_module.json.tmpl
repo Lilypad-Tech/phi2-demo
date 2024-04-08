@@ -1,4 +1,3 @@
-
 {
     "machine": {
         "gpu": 1,
@@ -8,7 +7,7 @@
     "job": {
         "APIVersion": "V1beta1",
         "Metadata": {
-            "CreatedAt": "0001-01-01T00:00:00Z",
+            "CreatedAt": "{{now}}",
             "Requester": {}
         },
         "Spec": {
@@ -17,13 +16,13 @@
             },
             "Docker": {
                 "EnvironmentVariables": [
-                    "{{if .PromptEnv}}{{.PromptEnv}}{{else}}PROMPT=Default prompt for phi2-demo{{end}}",
-                    "{{if .SeedEnv}}{{.SeedEnv}}{{else}}RANDOM_SEED=42{{end}}"
+                    "{{if .Prompt}}{{.Prompt}}{{else}}PROMPT=Default prompt for phi2-demo{{end}}",
+                    "RANDOM_SEED=42"
                 ],
                 "Entrypoint": [
                     "python3",
                     "/usr/src/app/loadmodel.py",
-                    "{{if .Prompt}}{{.Prompt}}{{else}}Default prompt for phi2-demo{{end}}"
+                    "{{.Prompt}}"
                 ],
                 "Image": "hub.docker.com/noryev/phi2-demo:latest"
             },
