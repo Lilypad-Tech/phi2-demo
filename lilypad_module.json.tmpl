@@ -16,7 +16,7 @@
             },
             "Docker": {
                 "EnvironmentVariables": [
-                    "{{if .Prompt}}{{.Prompt}}{{else}}PROMPT='Default prompt for phi2-demo'{{end}}",
+                    "PROMPT={{.Prompt}}",
                     "RANDOM_SEED=42"
                 ],
                 "Entrypoint": [
